@@ -1,47 +1,48 @@
 const squares = document.querySelectorAll('.boxes')
-const guy = document.getElementsByClassName('.guy')
+const guy = document.querySelector('.guy')
+const timeLeft = document.querySelector('.time-left')
 const score = document.querySelector('.score')
-const time_left = document.querySelector('.time-left')
 
-let Result = 0
+let result = 0
 let hitPosition
 let currentTime = 60
+let timerId = null
 
-const randomSquare = () => {
+function randomSquare() {
     squares.forEach((square) => {
-        square.classList.remove(guy)
+        square.classList.remove('guy')
     })
 
-    let RandomSquare = squares[Math.floor(Math.random() * 9)]
-    randomSquare.classList.add(guy)
+    let randomSquare = squares[Math.floor(Math.random() * 9)]
+    randomSquare.classList.add('guy')
 
-    hitPosition = RandomSquare.id
+    hitPosition = randomSquare.id
 }
 
 squares.forEach((square) => {
     square.addEventListener('mousedown', () => {
         if (square.id == hitPosition) {
-            Result++
-            score.textContent = Result
+            result++
+            score.textContent = result
             hitPosition = null
         }
     })
 })
 
-const moveGuy = () => {
-    let TimerId = null
-    TimerId = setInterval(randomSquare, 1000)
+function moveMole() {
+    timerId = setInterval(randomSquare, 500)
 }
 
-moveGuy()
+moveMole()
 
-const countDown = () => {
+function countDown() {
     currentTime--
-    time_left.textContent = currentTime
+    timeLeft.textContent = currentTime
 
-    if (currentTime === 0) {
+    if (currentTime == 0) {
         clearInterval(countDownTimerId)
-        alert(`Game Over Your Score is ${Result}`)
+        clearInterval(timerId)
+        alert('GAME OVER! Your final score is ' + result)
     }
 }
 
