@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav{
+    height: 4rem;
+    background-color: yellowgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container{
+    height: 612px;
+    width: 612px;
+    border: 1px solid black;
+    margin-left: 29rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.boxes{
+    height: 200px;
+    width: 200px;
+    border: 2px solid blue;
+    margin: 1px;
+}
+
+.guy{
+    background: aqua;
+}
